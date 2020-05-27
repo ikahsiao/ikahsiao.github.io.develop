@@ -13,5 +13,12 @@ module.exports = {
 		'no-tabs': 0, //  Airbnb has set the rule no-tabs to 2 or error,
 		'newline-before-return': 'error',
 		indent: ['error', 'tab'],
+		'import/extensions': [
+			'error', 'always',
+			{
+				js: 'never',
+				vue: 'never',
+			},
+		],
 	}
 }
