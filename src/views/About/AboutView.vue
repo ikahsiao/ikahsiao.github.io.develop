@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-	font-size: 100px;
+	margin: rem(0 0 30px -8px);
+	font-size: rem(100px);
 }
 </style>
