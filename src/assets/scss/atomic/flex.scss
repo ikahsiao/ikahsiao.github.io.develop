@@ -1,0 +1,84 @@
+/** Flexbox atomic classes **/
+
+/* Displays */
+.df {
+	display: flex;
+}
+
+.dif {
+	display: inline-flex;
+}
+
+/* Directions */
+.fd-column {
+	flex-direction: column;
+}
+
+.fd-row {
+	flex-direction: row;
+}
+
+/* Wraps  */
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+/* Flex */
+
+// Relative fluid item
+// https://www.w3.org/TR/css-flexbox-1/#flex-property
+.flex-fluid {
+	flex: 1 1 auto;
+}
+
+// Absolute fluid item
+// https://www.w3.org/TR/css-flexbox-1/#flex-property
+.flex-fluid-abs {
+	// Use unit in flex-basis to fix IE bug
+	// https://github.com/philipwalton/flexbugs#flexbug-4
+	// Use flex basis 0px instead of 0% to fix FF bug
+	// https://github.com/philipwalton/flexbugs/issues/25
+	flex: 1 1 0;
+}
+
+/* Items aligns */
+.ai-start {
+	align-items: flex-start;
+}
+
+.ai-end {
+	align-items: flex-end;
+}
+
+.ai-center {
+	align-items: center;
+}
+
+.ai-stretch {
+	align-items: stretch;
+}
+
+.ai-baseline {
+	align-items: baseline;
+}
+
+/* Content justifies */
+.jc-start {
+	justify-content: flex-start;
+}
+
+.jc-end {
+	justify-content: flex-end;
+}
+
+.jc-sb {
+	justify-content: space-between;
+}
+
+.jc-sa {
+	justify-content: space-around;
+}
+
+.jc-center {
+	justify-content: center;
+}

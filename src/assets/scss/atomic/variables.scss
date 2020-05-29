@@ -1,0 +1,45 @@
+$font-family: "Roboto", "Open Sans", "Helvetica", "Verdana", "Tahoma", "PingFang TC",
+	"Lantinghei TC", "Microsoft JhengHei", sans-serif;
+
+
+// Width
+$widths: 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+	
+// Min-Width
+$minWidths: 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+// Max-Width
+$maxWidths: 100, 200, 300, 400, 500;
+
+// Height
+$heights: 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+// Min-Height
+$minHeights: 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+// Max-Height
+$maxHeights: 50, 100, 200, 300, 400, 500;
+
+/* Margin and padding */
+$spacers: 0, 5, 10, 15, 20, 25, 30;
+
+/* Font Size */
+$font-size: 16px !default;
+$font-sizes: 8, 12, 13, 14, 16, 17, 18, 20, 22, 24, 26, 36;
+
+/* Font weight */
+$font-weight: 400;
+$weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+/*
+ * Z position of components
+ * Dialog < PageLoadingSpinner
+ */
+$z-indexes: (
+	"chart-line-header": 1,
+	"table-sticky-header": 1,
+	"q-select": 3,
+	"dialog": 4,
+	"tooltip": 5,
+	"page-loading-spinner": 6
+);

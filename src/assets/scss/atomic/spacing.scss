@@ -1,0 +1,66 @@
+/** Margin and padding atomic classes **/
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+	@each $spacer in $spacers {
+		$value: $spacer * 1px;
+
+		.#{$abbrev}t-#{$spacer} {
+			#{$prop}-top: rem($value);
+		}
+
+		.#{$abbrev}r-#{$spacer} {
+			#{$prop}-right: rem($value);
+		}
+
+		.#{$abbrev}b-#{$spacer} {
+			#{$prop}-bottom: rem($value);
+		}
+
+		.#{$abbrev}l-#{$spacer} {
+			#{$prop}-left: rem($value);
+		}
+
+		.#{$abbrev}tb-#{$spacer} {
+			#{$prop}-top: rem($value);
+			#{$prop}-bottom: rem($value);
+		}
+
+		.#{$abbrev}lr-#{$spacer} {
+			#{$prop}-left: rem($value);
+			#{$prop}-right: rem($value);
+		}
+
+		.#{$abbrev}d-#{$spacer} {
+			#{$prop}: rem($value);
+		}
+		
+		.#{$abbrev}g-#{$spacer} {
+			#{$prop}: rem($value);
+		}
+	}
+}
+
+.mt-a {
+	margin-top: auto;
+}
+
+.mr-a {
+	margin-right: auto;
+}
+
+.mb-a {
+	margin-bottom: auto;
+}
+
+.ml-a {
+	margin-left: auto;
+}
+
+.mlr-a {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.va-middle {
+	vertical-align: middle;
+}
