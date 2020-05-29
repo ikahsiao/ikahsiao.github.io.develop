@@ -57,9 +57,7 @@
 			:options="options"
 		>
 			<AboutView />
-			<div class="section">
-				Second section ...
-			</div>
+			<SkillView />
 			<div class="section">
 				Third section ...
 			</div>
@@ -68,12 +66,14 @@
 </template>
 
 <script>
-import AboutView from 'components/about/AboutView';
+import AboutView from 'views/About/AboutView';
+import SkillView from 'views/Skill/SkillView';
 
 export default {
 	name: 'App',
 	components: {
 		AboutView,
+		SkillView,
 	},
 	data() {
 		return {
