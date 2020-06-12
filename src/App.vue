@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="bg1"></div>
+		<div class="bg1" />
 		<header class="pos-a left-0 top-0 df ai-center jc-sb w-max pd-20 zi-lv1">
 			<a
 				class="logo"

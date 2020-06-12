@@ -1,11 +1,25 @@
 <template>
-    <div class="section">
-        Second section ...
-    </div>
+	<div class="section">
+		<div class="section-container">
+			<h1>
+				SKILLS
+			</h1>
+			<h2>Hi, I am ika Hsiao.</h2>
+			<p>
+				I am a web front-end developer living in Hsinchu and currently working for QNAP.
+			</p>
+			<p>
+				I build efficient, standards compliant, cross device and cross browser web site.
+			</p>
+			<p>
+				I also design web site layout, I love clean and simple design, I designed over 300 web sites.
+			</p>
+		</div>
+	</div>
 </template>
 
 <script>
 export default {
-    name: 'SkillView'
-}
+	name: 'SkillView',
+};
 </script>
