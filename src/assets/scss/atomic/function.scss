@@ -1,0 +1,6 @@
+@import './variables';
+
+// FIXME: Fix functions
+@function z-index($key) {
+	@return map-get($z-indexes, $key);
+}
