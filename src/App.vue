@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<div class="bg1"></div>
-		<header class="pos-a left-0 top-0 df ai-center jc-sb w-max pd-20 zi-lv1">
+		<div class="bg" />
+		<header class="header">
 			<a
 				class="logo"
 				href="#about"
@@ -57,32 +57,50 @@
 			:options="options"
 		>
 			<AboutView />
-			<div class="section">
-				Second section ...
-			</div>
-			<div class="section">
-				Third section ...
-			</div>
+			<SkillsView />
+			<WorksView @toggle-dialog="toggleDialog" />
 		</full-page>
+
+		<DialogContainer
+			v-for="dialog in dialogs"
+			:key="dialog.type"
+			:type="dialog.type"
+			:config="dialog.config"
+			@close="toggleDialog"
+		/>
 	</div>
 </template>
 
 <script>
-import AboutView from 'components/about/AboutView';
+import { mapState } from 'vuex';
+import DialogContainer from 'components/Dialog/DialogContainer';
+import AboutView from 'views/About/AboutView';
+import SkillsView from 'views/Skills/SkillsView';
+import WorksView from 'views/Works/WorksView';
 
 export default {
 	name: 'App',
 	components: {
 		AboutView,
+		DialogContainer,
+		SkillsView,
+		WorksView,
 	},
 	data() {
 		return {
 			options: {
 				anchors: ['about', 'skills', 'works'],
 				menu: '.menu',
+				normalScrollElements: '#work-detail-dialog',
+				responsiveWidth: 640,
+				responsiveHeight: 500,
 			},
 			menuActive: false,
+			dialogActive: false,
 		};
+	},
+	computed: {
+		...mapState('Dialog', ['dialogs']),
 	},
 	methods: {
 		toggleMenu() {
@@ -90,18 +108,58 @@ export default {
 
 			this.$refs.fullpage.api.setAllowScrolling(!this.menuActive);
 		},
+		toggleDialog() {
+			this.dialogActive = !this.dialogActive;
+
+			this.$refs.fullpage.api.setAllowScrolling(!this.dialogActive);
+		},
 	},
 };
 </script>
 
 <style lang="scss">
+.header {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: rem(40px);
+	z-index: 2;
+
+
+	@media(max-width: rem(640px)) {
+		padding: rem(20px 40px);
+		position: fixed;
+		background: linear-gradient(
+			180deg,
+			rgba(244, 244, 244, 1) 0%,
+			rgba(244, 244, 244, 0.9) 50%,
+			rgba(244, 244, 244, 0.8) 80%,
+			rgba(244, 244, 244, 0)
+			100%);
+	}
+}
 .section {
-  padding: 80px;
+  padding: rem(140px 80px 80px);
+
+
+	@media(max-width: rem(640px)) {
+		padding: rem(140px 40px 40px);
+		height: auto !important;
+		min-height: calc(100vh - 140px);
+
+		.fp-tableCell {
+			height: auto !important;
+			min-height: calc(100vh - 140px);
+		}
+	}
 }
 
 .logo {
   position: relative;
-  z-index: 1000;
   transition: 0.3s;
 
   &:hover {
@@ -111,7 +169,19 @@ export default {
 
 .menu-button {
   position: relative;
-  z-index: 1000;
+  z-index: 5;
+	outline: none;
+	padding: 0;
+
+	&.is-active {
+		.hamburger-inner {
+			background: #fff;
+
+			&::before, &::after {
+				background: #fff;
+			}
+		}
+	}
 }
 
 .menu {
@@ -121,14 +191,15 @@ export default {
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 900;
+    z-index: 4;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.4);
+    justify-content: flex-start;
+		padding-top: rem(150px);
+    background: rgba(0, 0, 0, 0.6);
   }
 
   li {
@@ -136,5 +207,12 @@ export default {
     margin: 20px 0;
     text-transform: capitalize;
   }
+
+	a {
+		color: #fff;
+		text-decoration: none;
+		font-size: rem(48px);
+	}
 }
+
 </style>
