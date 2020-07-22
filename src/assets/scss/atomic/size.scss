@@ -1,4 +1,4 @@
-/** Width atomic classes **/
+/** Size atomic classes **/
 
 /* Widths */
 @each $width in $widths {
@@ -6,6 +6,15 @@
 
 	.w-#{$width} {
 		width: rem($value);
+	}
+}
+
+/* Heights */
+@each $height in $heights {
+	$value: $height * 1px;
+
+	.h-#{$height} {
+		height: rem($value);
 	}
 }
 
@@ -35,6 +44,10 @@
 
 .wp-40 {
 	width: 40%;
+}
+
+.wp-30 {
+	width: 30%;
 }
 
 .wp-20 {

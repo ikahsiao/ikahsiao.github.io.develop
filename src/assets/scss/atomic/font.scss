@@ -1,0 +1,21 @@
+/** Font atomic classes **/
+
+/* Font weights */
+@each $w in $weights {
+	.fw-#{$w} {
+		font-weight: rem(#{$w});
+	}
+}
+
+.fw-bold {
+	font-weight: bold;
+}
+
+/* Font sizes */
+@each $size in $font-sizes {
+	$value: $size * 1px;
+
+	.fz-#{$size} {
+		font-size: rem($value);
+	}
+}
