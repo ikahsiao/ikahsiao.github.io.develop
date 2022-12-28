@@ -62,13 +62,25 @@ export default {
 			default: null,
 		},
 	},
+	data() {
+		return {
+			body: null,
+		};
+	},
 	computed: {
 		width() {
-			return window.innerWidth < 641 ? window.innerWidth : '1200';
+			return String(window.innerWidth - 80);
 		},
 		height() {
-			return window.innerWidth < 641 ? window.innerHeight : '600';
+			return String(window.innerHeight - 80);
 		},
+	},
+	created() {
+		this.body = document.querySelector('body');
+		this.body.classList.add('ov-hidden');
+	},
+	beforeDestroy() {
+		this.body.classList.remove('ov-hidden');
 	},
 };
 </script>

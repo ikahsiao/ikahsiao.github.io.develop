@@ -81,6 +81,7 @@ h1 {
 .skill-list-container {
 	display: flex;
 	font-size: rem(24px);
+	color: #666;
 
 	@media(max-width: rem(640px)) {
 		flex-direction: column;
