@@ -1,5 +1,5 @@
 <template>
-	<div class="section fp-auto-height-responsive">
+	<div class="section">
 		<div class="section-container">
 			<h1>Skills</h1>
 			<div class="skill-list-container">
