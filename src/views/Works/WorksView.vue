@@ -1,67 +1,26 @@
 <template>
-	<div class="section fp-auto-height-responsive">
+	<div class="section">
 		<div class="section-container">
-			<div class="df ai-baseline">
-				<h1>Works</h1>
-				<div class="carousel-controls">
-					<button
-						class="carousel-prev"
-						@click="slideToPrevious"
-					>
-						<i
-							class="fa fa-minus"
-							aria-hidden="true"
-						/>
-					</button>
-					<span class="mlr-10 fz-40">/</span>
-					<button
-						class="carousel-next"
-						@click="slideToNext"
-					>
-						<i
-							class="fa fa-plus"
-							aria-hidden="true"
-						/>
-					</button>
-				</div>
-			</div>
-
-			<TinySlider
-				id="tiny-slider"
-				ref="tinySlider"
-				v-bind="sliderOptions"
-			>
+			<h1>Works</h1>
+			<div class="df flex-wrap">
 				<div
 					v-for="(work, index) in workList"
 					:key="index"
-					class="carousel-item"
+					class="item"
 					@click="showDetail(work)"
 				>
-					<div
-						class="carousel-inner-item"
+					<img
+						:src="work.thumb"
+						:alt="work.title"
+						class="item-image"
 					>
-						<h4 class="mtb-0">
-							{{ work.title }}
-						</h4>
-						<p class="fz-16 mb-20">
-							{{ work.description }}
-						</p>
-						<div class="carousel-image">
-							<img
-								:src="work.thumb"
-								:alt="work.title"
-								class="carousel-inner-item-image"
-							>
-						</div>
-					</div>
 				</div>
-			</TinySlider>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import VueTinySlider from 'vue-tiny-slider';
 import SdWanThumb from '@/assets/images/work/sd-wan-thumb.jpg';
 import SdWanImage from '@/assets/images/work/sd-wan-image.jpg';
 import WakeOnWanThumb from '@/assets/images/work/wake-on-wan-thumb.jpg';
@@ -91,9 +50,6 @@ import TemplateImage4 from '@/assets/images/work/template-04-image.jpg';
 
 export default {
 	name: 'SkillView',
-	components: {
-		TinySlider: VueTinySlider,
-	},
 	data() {
 		return {
 			workList: [
@@ -102,12 +58,14 @@ export default {
 					description: 'Front-end develop',
 					image: SdWanImage,
 					thumb: SdWanThumb,
+					link: 'https://www.qnap.com/en-us/software/quwan',
 				},
 				{
 					title: 'Wake on WAN device',
 					description: 'Front-end develop',
 					image: WakeOnWanImage,
 					thumb: WakeOnWanThumb,
+					link: 'https://www.qnap.com/en-us/product/qwu-100',
 				},
 				{
 					title: 'College website',
@@ -121,7 +79,6 @@ export default {
 					description: 'Design, CSS',
 					image: CollegeWebsiteImage2,
 					thumb: CollegeWebsiteThumb2,
-					link: 'https://aca.thu.edu.tw/',
 				},
 				{
 					title: 'College website',
@@ -184,23 +141,12 @@ export default {
 				nav: false,
 				controls: false,
 				loop: false,
-				responsive: {
-					200: { items: 1 },
-					640: { items: 3 },
-					1920: { items: 6 },
-				},
 			},
 		};
 	},
 	methods: {
-		slideToPrevious() {
-			this.$refs.tinySlider.slider.goTo('prev');
-		},
-		slideToNext() {
-			this.$refs.tinySlider.slider.goTo('next');
-		},
 		showDetail(work) {
-			this.$emit('toggle-dialog');
+			// this.$emit('toggle-dialog');
 
 			this.$dialog.open(
 				'WorkDetailDialog',
@@ -263,21 +209,21 @@ h1 {
 	cursor: pointer;
 }
 
-.carousel-image {
-	flex: 1 1 auto;
+.item {
+	width: 23%;
+	margin: 0 1% 50px;
+	cursor: pointer;
 	overflow: hidden;
 
-	img {
+	.item-image {
 		display: block;
 		width: 100%;
 		height: auto;
 		transition: 0.3s;
 	}
 
-	&:hover {
-		img {
-			transform: scale(1.1);
-		}
+	&:hover .item-image {
+		transform: scale(1.1);
 	}
 }
 </style>

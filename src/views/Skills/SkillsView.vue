@@ -1,5 +1,5 @@
 <template>
-	<div class="section fp-auto-height-responsive">
+	<div class="section">
 		<div class="section-container">
 			<h1>Skills</h1>
 			<div class="skill-list-container">
@@ -81,6 +81,7 @@ h1 {
 .skill-list-container {
 	display: flex;
 	font-size: rem(24px);
+	color: #666;
 
 	@media(max-width: rem(640px)) {
 		flex-direction: column;

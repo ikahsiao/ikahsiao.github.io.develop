@@ -14,6 +14,10 @@
 	position: fixed;
 }
 
+.pos-sticky {
+	position: sticky;
+}
+
 .left-0 {
 	left: 0;
 }
@@ -39,3 +43,4 @@
 	left: 50%;
 	transform: translateX(-50%);
 }
+

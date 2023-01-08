@@ -8,7 +8,7 @@
 			>
 				<img
 					src="@/assets/images/logo.png"
-					alt="ika hsiao"
+					alt="ika hsiao portfolio"
 					class="w-40 h-40"
 				>
 			</a>
@@ -29,44 +29,28 @@
 				class="menu"
 			>
 				<ul @click="toggleMenu">
-					<li
-						class="fz-20 mb-20"
-						data-menuanchor="about"
-					>
+					<li class="fz-20 mb-20">
 						<a href="#about">about</a>
 					</li>
-					<li
-						class="fz-20 mb-20"
-						data-menuanchor="skills"
-					>
+					<li class="fz-20 mb-20">
 						<a href="#skills">skills</a>
 					</li>
-					<li
-						class="fz-20 mb-20"
-						data-menuanchor="works"
-					>
+					<li class="fz-20 mb-20">
 						<a href="#works">works</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 
-		<full-page
-			id="fullpage"
-			ref="fullpage"
-			:options="options"
-		>
-			<AboutView />
-			<SkillsView />
-			<WorksView @toggle-dialog="toggleDialog" />
-		</full-page>
+		<AboutView id="about" />
+		<SkillsView id="skills" />
+		<WorksView id="works" />
 
 		<DialogContainer
 			v-for="dialog in dialogs"
 			:key="dialog.type"
 			:type="dialog.type"
 			:config="dialog.config"
-			@close="toggleDialog"
 		/>
 	</div>
 </template>
@@ -88,45 +72,49 @@ export default {
 	},
 	data() {
 		return {
-			options: {
-				anchors: ['about', 'skills', 'works'],
-				menu: '.menu',
-				normalScrollElements: '#work-detail-dialog',
-				responsiveWidth: 640,
-				responsiveHeight: 500,
-			},
 			menuActive: false,
-			dialogActive: false,
 		};
 	},
 	computed: {
 		...mapState('Dialog', ['dialogs']),
 	},
+	created() {
+		this.body = document.querySelector('body');
+	},
 	methods: {
 		toggleMenu() {
 			this.menuActive = !this.menuActive;
 
-			this.$refs.fullpage.api.setAllowScrolling(!this.menuActive);
-		},
-		toggleDialog() {
-			this.dialogActive = !this.dialogActive;
-
-			this.$refs.fullpage.api.setAllowScrolling(!this.dialogActive);
+			if (this.menuActive) {
+				this.body.classList.add('ov-hidden');
+			} else {
+				this.body.classList.remove('ov-hidden');
+			}
 		},
 	},
 };
 </script>
 
 <style lang="scss">
+html {
+	scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
 .header {
-	position: absolute;
+	position: sticky;
 	left: 0;
 	top: 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	padding: rem(40px);
+	padding: rem(40px 25px);
 	z-index: 2;
 
 
@@ -143,6 +131,9 @@ export default {
 	}
 }
 .section {
+	scroll-behavior: smooth;
+	position: relative;
+	z-index: 1;
   padding: rem(140px 80px 80px);
 
 
